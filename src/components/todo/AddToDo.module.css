@@ -1,0 +1,20 @@
+.input, .btn {
+  border-radius: 5px;
+}
+
+.input {
+  float: left;
+  border: 1px solid #4B4237;
+  height: 2rem;
+  width: 20rem;
+}
+
+.btn {
+  border-radius: 5px;
+  border: 0;
+  background-color: #3A7CA5;
+  width: 5rem;
+  height: 2.3rem;
+  margin-left: 1rem;
+  color: white;
+}

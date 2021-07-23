@@ -1,0 +1,37 @@
+.side {
+  background-color: #4b4237;
+  float: left;
+  margin: 0;
+  width: 10rem;
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.title {
+  text-align: center;
+  color: white;
+}
+
+.highlight {
+  color: #d5a021;
+}
+
+.content {
+  margin-top: 1rem;
+  width: inherit;
+  padding: 0;
+}
+
+.content a {
+  color: white;
+  text-decoration: none;
+}
+.content li {
+  padding: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+.content li:hover {
+  background-color: #736b60;
+}
