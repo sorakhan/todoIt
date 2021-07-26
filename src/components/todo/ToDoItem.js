@@ -1,3 +1,5 @@
+import CompleteButton from "../ui/CompleteButton";
+
 import style from "./TodoItem.module.css";
 
 function ToDoItem(props) {
@@ -15,14 +17,7 @@ function ToDoItem(props) {
 
   return (
     <li className={style.item} key={props.id}>
-      {!props.isCompleted && (
-        <div>
-          <button
-            className={style.btnComplete}
-            onClick={completeHandler}
-          ></button>
-        </div>
-      )}
+      {!props.isCompleted && <CompleteButton complete={completeHandler} />}
       <div className={style.title}>{props.title}</div>
       <div className={style.btnDelete}>
         <button onClick={deleteHandler}>X</button>

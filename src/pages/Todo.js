@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AddToDo from "../components/todo/AddToDo";
 import ToDoList from "../components/todo/ToDoList";
+import TodoContext from "../store/TodoContext";
 
 function Todo() {
-  const [toDoList, setToDoList] = useState([]);
+  const todoCtx = useContext(TodoContext);
   const [isLoading, setIsLoading] = useState(true);
 
   // get todos from realtime db
@@ -14,7 +15,7 @@ function Todo() {
         return response.json();
       })
       .then((data) => {
-        const todos = [];
+        let todos = [];
         for (const key in data) {
           const todo = {
             id: key,
@@ -22,7 +23,8 @@ function Todo() {
           };
           todos.push(todo);
         }
-        setToDoList(todos.filter((item) => item.isCompleted !== true));
+        todos = todos.filter((item) => item.isCompleted !== true);
+        todoCtx.updateTodos(todos);
         setIsLoading(false);
       });
   }, []);
@@ -47,7 +49,7 @@ function Todo() {
           ...todoData,
         };
 
-        setToDoList(toDoList.concat(todo));
+        todoCtx.updateTodos(todoCtx.taskList.concat(todo));
       });
   }
 
@@ -62,8 +64,8 @@ function Todo() {
         },
       }
     ).then(() => {
-      const remaining = toDoList.filter((item) => item.id !== todoId);
-      setToDoList(remaining);
+      const remaining = todoCtx.taskList.filter((item) => item.id !== todoId);
+      todoCtx.updateTodos(remaining);
     });
   }
 
@@ -72,7 +74,7 @@ function Todo() {
   }
 
   function deleteTaskHandler(taskId) {
-    setToDoList(toDoList.filter((item) => item.id !== taskId));
+    todoCtx.updateTodos(todoCtx.taskList.filter((item) => item.id !== taskId));
   }
 
   return (
@@ -80,7 +82,7 @@ function Todo() {
       <h1>To Do's</h1>
       <AddToDo addItem={addItemHandler} />
       <ToDoList
-        list={toDoList}
+        list={todoCtx.taskList.filter((item) => item.isCompleted !== true)}
         complete={completeTaskHandler}
         delete={deleteTaskHandler}
       />

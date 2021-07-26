@@ -20,7 +20,6 @@ function Completed() {
           };
           todos.push(todo);
         }
-
         setCompletedList(todos.filter((item) => item.isCompleted === true));
         // setIsLoading(false);
       });
