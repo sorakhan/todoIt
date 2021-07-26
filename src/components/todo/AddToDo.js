@@ -6,8 +6,11 @@ function AddToDo(props) {
 
   function addHandler(event) {
     event.preventDefault();
-    const todoTitle = titleRef.current.value;
-    props.add(todoTitle);
+    const todoData = {
+      title: titleRef.current.value,
+      isCompleted: false,
+    };
+    props.addItem(todoData);
   }
 
   return (
@@ -15,7 +18,13 @@ function AddToDo(props) {
       <form onSubmit={addHandler}>
         <div>
           <label htmlFor="title"></label>
-          <input className={style.input} type="text" id="title" required ref={titleRef}/>
+          <input
+            className={style.input}
+            type="text"
+            id="title"
+            required
+            ref={titleRef}
+          />
         </div>
         <div>
           <button className={style.btn}>Add</button>

@@ -2,20 +2,27 @@ import style from "./TodoItem.module.css";
 
 function ToDoItem(props) {
   function completeHandler() {
-    // [] This should move to Completed page!!! 
-    props.complete(props.id);
+    const todo = {
+      title: props.title,
+      isCompleted: true,
+    };
+    props.complete(props.id, todo);
   }
 
   function deleteHandler() {
-    // [] This should delete the todo and not exist anywhwere
-    props.complete(props.id);
+    props.delete(props.id);
   }
 
   return (
     <li className={style.item} key={props.id}>
-      <div>
-        <button className={style.btnComplete} onClick={completeHandler}></button>
-      </div>
+      {!props.isCompleted && (
+        <div>
+          <button
+            className={style.btnComplete}
+            onClick={completeHandler}
+          ></button>
+        </div>
+      )}
       <div className={style.title}>{props.title}</div>
       <div className={style.btnDelete}>
         <button onClick={deleteHandler}>X</button>
