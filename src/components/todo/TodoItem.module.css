@@ -10,25 +10,33 @@
   margin-left: 1rem;
 }
 
-.btnDelete button {
+.btnEdit, .btnDelete {
   background-color: transparent;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
+  border: none;
+  opacity: 0.5;
+}
+
+.btnEdit {
+  color: #3A7CA5;
 }
 
 .btnDelete {
+  color: #ee4266;
+}
+
+.btnEdit:hover, .btnDelete:hover {
+  opacity: 1;
+}
+
+.side {
+  width: 10rem;
   float: right;
+  display: flex;
+  justify-content: space-between;
 }
 
-.btnDelete button {
-  font-family: inherit;
-  font-weight: bold;
-  border: none;
-  color: #EE4266;
-}
-
-.btnDelete button:hover {
-  background-color: #EE4266;
-  color: white;
+.date {
+  width: 50%;
+  text-align: center;
+  opacity: 0.5;
 }

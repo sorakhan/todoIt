@@ -22,6 +22,7 @@ function ToDoList(props) {
             id={todo.id}
             title={todo.title}
             isCompleted={todo.isCompleted}
+            scheduledDate={todo.scheduledDate}
             complete={props.complete}
             delete={deleteItemHandler}
           />

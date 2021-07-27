@@ -9,6 +9,7 @@ function AddToDo(props) {
     const todoData = {
       title: titleRef.current.value,
       isCompleted: false,
+      scheduledDate: new Date()
     };
     props.addItem(todoData);
   }
